@@ -12,9 +12,9 @@ import vista.VentanaCirculo;
  *
  * @author tutoriales
  */
-public class AccionBoton1 implements ActionListener {
+public class AccionBotonDibujarCirculo implements ActionListener {
     VentanaCirculo vc;
-    public AccionBoton1(VentanaCirculo vc) {
+    public AccionBotonDibujarCirculo(VentanaCirculo vc) {
         this.vc = vc;
     }
 
@@ -25,10 +25,10 @@ public class AccionBoton1 implements ActionListener {
         int r = Integer.parseInt(vc.textR.getText());
         if(r <= 11){
             String modo = "normal";
-            if(vc.radio2.isSelected()){
+            if(vc.radioBtnGruesa.isSelected()){
                 modo = "Linea Gruesa";
             }else{
-                if(vc.radio3.isSelected())
+                if(vc.radioBtnSegmentada.isSelected())
                     modo = "Linea Segmentada";
             }
             BresenhamCirculo bres = new BresenhamCirculo(vc.getPanel1());

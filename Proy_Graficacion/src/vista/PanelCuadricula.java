@@ -1,5 +1,6 @@
 package vista;
 
+import modelo.Pixel;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -53,7 +54,8 @@ public class PanelCuadricula extends JPanel{
     }
     
     public void pintar(int x,int y){
-        cuadricula[24-y][x].encender();
+        int t = cuadricula.length;
+        cuadricula[t-y-1][x].encender();
         repaint();
     }
 

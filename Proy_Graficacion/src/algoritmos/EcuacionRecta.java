@@ -46,7 +46,7 @@ public class EcuacionRecta extends Primitiva2DLinea{
                 if(grueso)
                     panel.pintar(x+1, y);
                 try {
-                    Thread.sleep(250);
+                    Thread.sleep(550);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(EcuacionRecta.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -62,7 +62,7 @@ public class EcuacionRecta extends Primitiva2DLinea{
                     if(grueso)
                         panel.pintar(x, y+1);
                     try {
-                        Thread.sleep(250);
+                        Thread.sleep(550);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(EcuacionRecta.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -80,7 +80,7 @@ public class EcuacionRecta extends Primitiva2DLinea{
                         if(grueso)
                             panel.pintar(x, y+1);
                         try {
-                            Thread.sleep(250);
+                            Thread.sleep(550);
                         } catch (InterruptedException ex) {
                             Logger.getLogger(EcuacionRecta.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -94,7 +94,7 @@ public class EcuacionRecta extends Primitiva2DLinea{
                             if(grueso)
                                 panel.pintar(x, y+1);
                             try {
-                                Thread.sleep(250);
+                                Thread.sleep(550);
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(EcuacionRecta.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -112,7 +112,7 @@ public class EcuacionRecta extends Primitiva2DLinea{
                                 if(grueso)
                                     panel.pintar(x, y+1);
                                 try {
-                                    Thread.sleep(250);
+                                    Thread.sleep(550);
                                 } catch (InterruptedException ex) {
                                     Logger.getLogger(EcuacionRecta.class.getName()).log(Level.SEVERE, null, ex);
                                 }
@@ -125,7 +125,7 @@ public class EcuacionRecta extends Primitiva2DLinea{
                                 if(grueso)
                                     panel.pintar(x+1, y);
                                 try {
-                                    Thread.sleep(250);
+                                    Thread.sleep(550);
                                 } catch (InterruptedException ex) {
                                     Logger.getLogger(EcuacionRecta.class.getName()).log(Level.SEVERE, null, ex);
                                 }

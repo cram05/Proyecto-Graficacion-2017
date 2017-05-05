@@ -1,5 +1,5 @@
 
-package vista;
+package modelo;
 
 import java.awt.Point;
 
@@ -17,7 +17,7 @@ public class Pixel extends Point{
     public void encender(){
         power = true;
     }
-    boolean estaEncendido() {
+    public boolean estaEncendido() {
         return power;
     }
 }

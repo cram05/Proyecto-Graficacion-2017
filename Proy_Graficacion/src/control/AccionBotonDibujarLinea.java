@@ -14,10 +14,10 @@ import vista.VentanaLinea;
  *
  * @author tutoriales
  */
-public class AccionBotonLinea implements ActionListener {
+public class AccionBotonDibujarLinea implements ActionListener {
     private VentanaLinea vl;
     
-    public AccionBotonLinea(VentanaLinea v) {
+    public AccionBotonDibujarLinea(VentanaLinea v) {
         vl = v;
     }
 

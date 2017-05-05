@@ -38,7 +38,7 @@ public class BresenhamLinea extends Primitiva2DLinea{
                 {
                     panel.pintar(x0, y0);
                     try {
-                    Thread.sleep(250);
+                    Thread.sleep(550);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(PanelCuadricula.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -75,7 +75,7 @@ public class BresenhamLinea extends Primitiva2DLinea{
             if(aux == true){
             panel.pintar(x0, y0);
             try {
-            Thread.sleep(250);
+            Thread.sleep(550);
             } catch (InterruptedException ex) {
                 Logger.getLogger(PanelCuadricula.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -137,7 +137,7 @@ public class BresenhamLinea extends Primitiva2DLinea{
             panel.pintar(x0, y0);
             panel.pintar(x0, y0+1);
             try {
-            Thread.sleep(250);
+            Thread.sleep(550);
             } catch (InterruptedException ex) {
                 Logger.getLogger(PanelCuadricula.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -166,7 +166,7 @@ public class BresenhamLinea extends Primitiva2DLinea{
             panel.pintar(x0, y0);
             panel.pintar(x0+1, y0);
             try {
-            Thread.sleep(250);
+            Thread.sleep(550);
             } catch (InterruptedException ex) {
                 Logger.getLogger(PanelCuadricula.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -195,7 +195,7 @@ public class BresenhamLinea extends Primitiva2DLinea{
             panel.pintar(x0, y0);
             panel.pintar(x0+1, y0);
             try {
-            Thread.sleep(250);
+            Thread.sleep(550);
             } catch (InterruptedException ex) {
                 Logger.getLogger(PanelCuadricula.class.getName()).log(Level.SEVERE, null, ex);
             }

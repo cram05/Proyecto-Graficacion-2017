@@ -1,6 +1,6 @@
 package vista;
 
-import control.AccionBotonLinea;
+import control.AccionBotonDibujarLinea;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ButtonGroup;
@@ -104,7 +104,7 @@ public class VentanaLinea extends JFrame{
         boton1.setBounds(240, 400, 80, 25);
         boton1.setForeground(Color.white);//color de la letra
         boton1.setBackground(Color.GREEN);//color boton
-        boton1.addActionListener(new AccionBotonLinea(this));
+        boton1.addActionListener(new AccionBotonDibujarLinea(this));
         boton1.setFocusable(true);
         this.add(boton1);
         
@@ -121,6 +121,7 @@ public class VentanaLinea extends JFrame{
         radio1.setForeground(Color.WHITE);
         radio1.setContentAreaFilled(false);
         radio1.setBounds(330,400,120,30);
+        radio1.setSelected(true);
         this.add(radio1);
         radio2=new JRadioButton("Linea Gruesa");
         radio2.setForeground(Color.WHITE);

@@ -8,7 +8,7 @@ import modelo.Primitiva2DLinea;
 import vista.PanelCuadricula;
 
 /**
- *
+ *thread tiempo igualar tiempo
  * @author HP
  */
 public class DDA extends Primitiva2DLinea{
