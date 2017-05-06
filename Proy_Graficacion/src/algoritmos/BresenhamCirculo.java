@@ -1,5 +1,6 @@
 package algoritmos;
 
+import java.awt.Color;
 import modelo.Primitiva2DCirculo;
 import java.awt.Point;
 import java.util.logging.Level;
@@ -18,7 +19,7 @@ public class BresenhamCirculo extends Primitiva2DCirculo{
     }
     
     @Override
-    public void circulo(int radio, String modo){
+    public void dibujarCirculo(int radio, String modo, Color color){
         //////////
         boolean segmentado = modo.equals("Linea Segmentada");
         boolean grueso = modo.equals("Linea Gruesa");
@@ -30,26 +31,26 @@ public class BresenhamCirculo extends Primitiva2DCirculo{
         if(segmentado)
             inc = 2;
         while(x >= y){
-            panel.pintar(x+12, y+12);
-            panel.pintar(y+12, x+12);
-            panel.pintar(-x+12, y+12);
-            panel.pintar(-y+12, x+12);
-            panel.pintar(-x+12, -y+12);
-            panel.pintar(-y+12, -x+12);
-            panel.pintar(x+12, -y+12);
-            panel.pintar(y+12, -x+12);
+            panel.pintar(x+12, y+12, color);
+            panel.pintar(y+12, x+12, color);
+            panel.pintar(-x+12, y+12, color);
+            panel.pintar(-y+12, x+12, color);
+            panel.pintar(-x+12, -y+12, color);
+            panel.pintar(-y+12, -x+12, color);
+            panel.pintar(x+12, -y+12, color);
+            panel.pintar(y+12, -x+12, color);
             if(grueso){
-                panel.pintar(x+13, y+12);
-                panel.pintar(y+12, x+13);
-                panel.pintar(-x+11, y+12);
-                panel.pintar(-y+12, x+13);
-                panel.pintar(-x+11, -y+12);
-                panel.pintar(-y+12, -x+11);
-                panel.pintar(x+13, -y+12);
-                panel.pintar(y+12, -x+11);
+                panel.pintar(x+13, y+12, color);
+                panel.pintar(y+12, x+13, color);
+                panel.pintar(-x+11, y+12, color);
+                panel.pintar(-y+12, x+13, color);
+                panel.pintar(-x+11, -y+12, color);
+                panel.pintar(-y+12, -x+11, color);
+                panel.pintar(x+13, -y+12, color);
+                panel.pintar(y+12, -x+11, color);
             }
             try {
-                Thread.sleep(450);
+                Thread.sleep(350);
             } catch (InterruptedException ex) {
                 Logger.getLogger(BresenhamCirculo.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -60,7 +61,7 @@ public class BresenhamCirculo extends Primitiva2DCirculo{
                 e = e - 2*x +1;
             }
         }
-        System.out.println("exitoso BresenhamCirculo");
+        System.out.println("alg. BresenhamCirculo termino!");
     }
     
 }

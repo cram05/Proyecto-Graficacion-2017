@@ -1,5 +1,6 @@
 
 package algoritmos;
+import java.awt.Color;
 import modelo.Primitiva2DLinea;
 import java.awt.Point;
 import java.util.logging.Level;
@@ -18,7 +19,7 @@ public class EcuacionRecta extends Primitiva2DLinea{
     }
     
     @Override
-    public void linea(Point ini, Point fin, String modo){
+    public void dibujarLinea(Point ini, Point fin, String modo, Color color){
         //////////
         boolean segmentado = modo.equals("Linea Segmentada");
         boolean grueso = modo.equals("Linea Gruesa");
@@ -42,9 +43,9 @@ public class EcuacionRecta extends Primitiva2DLinea{
                 inc *= -1;
             }
             for (int i = 0; i <= dyAbs; i++) {
-                panel.pintar(x, y);
+                panel.pintar(x, y, color);
                 if(grueso)
-                    panel.pintar(x+1, y);
+                    panel.pintar(x+1, y, color);
                 try {
                     Thread.sleep(550);
                 } catch (InterruptedException ex) {
@@ -58,9 +59,9 @@ public class EcuacionRecta extends Primitiva2DLinea{
                     inc *= -1;
                 }
                 for (int i = 0; i <= dxAbs; i++) {
-                    panel.pintar(x, y);
+                    panel.pintar(x, y, color);
                     if(grueso)
-                        panel.pintar(x, y+1);
+                        panel.pintar(x, y+1, color);
                     try {
                         Thread.sleep(550);
                     } catch (InterruptedException ex) {
@@ -76,9 +77,9 @@ public class EcuacionRecta extends Primitiva2DLinea{
                 if(m > 0 && m <= 1){//primer octante
                     for(int i = 0; i <= dxAbs; i++){
                         y = Math.round(m * x + b);
-                        panel.pintar(x, y);
+                        panel.pintar(x, y, color);
                         if(grueso)
-                            panel.pintar(x, y+1);
+                            panel.pintar(x, y+1, color);
                         try {
                             Thread.sleep(550);
                         } catch (InterruptedException ex) {
@@ -90,9 +91,9 @@ public class EcuacionRecta extends Primitiva2DLinea{
                     if(m > 1){//2do octante
                         for (int i = 0; i <= dyAbs; i++) {
                             x = Math.round((y - b)/m);
-                            panel.pintar(x, y);
+                            panel.pintar(x, y, color);
                             if(grueso)
-                                panel.pintar(x, y+1);
+                                panel.pintar(x, y+1, color);
                             try {
                                 Thread.sleep(550);
                             } catch (InterruptedException ex) {
@@ -108,9 +109,9 @@ public class EcuacionRecta extends Primitiva2DLinea{
                         if(m <= -1){//cuarto octante
                             for (int i = 0; i <= dyAbs; i++) {
                                 x = Math.round((y - b)/m);
-                                panel.pintar(x, y);
+                                panel.pintar(x, y, color);
                                 if(grueso)
-                                    panel.pintar(x, y+1);
+                                    panel.pintar(x, y+1, color);
                                 try {
                                     Thread.sleep(550);
                                 } catch (InterruptedException ex) {
@@ -121,9 +122,9 @@ public class EcuacionRecta extends Primitiva2DLinea{
                         }else{//m<0 && m > -1
                             for(int i = 0; i <= dxAbs; i++){
                                 y = Math.round(m * x + b);
-                                panel.pintar(x, y);
+                                panel.pintar(x, y, color);
                                 if(grueso)
-                                    panel.pintar(x+1, y);
+                                    panel.pintar(x+1, y, color);
                                 try {
                                     Thread.sleep(550);
                                 } catch (InterruptedException ex) {

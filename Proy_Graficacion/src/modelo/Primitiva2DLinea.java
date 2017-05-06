@@ -1,5 +1,6 @@
 package modelo;
 
+import java.awt.Color;
 import java.awt.Point;
 
 /**
@@ -7,5 +8,5 @@ import java.awt.Point;
  * @author Carlos Ramos
  */
 abstract public class Primitiva2DLinea {
-    abstract public void linea(Point ini, Point fin, String modo);
+    abstract public void dibujarLinea(Point ini, Point fin, String modo, Color color);
 }

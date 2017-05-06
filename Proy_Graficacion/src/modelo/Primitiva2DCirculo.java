@@ -1,9 +1,11 @@
 package modelo;
 
+import java.awt.Color;
+
 /**
  *
  * @author Carlos Ramos
  */
 abstract public class Primitiva2DCirculo {
-    abstract public void circulo(int radio, String modo);
+    abstract public void dibujarCirculo(int radio, String modo, Color color);
 }

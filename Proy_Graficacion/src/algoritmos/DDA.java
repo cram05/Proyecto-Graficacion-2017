@@ -1,5 +1,6 @@
 package algoritmos;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,11 +14,13 @@ import vista.PanelCuadricula;
  */
 public class DDA extends Primitiva2DLinea{
     PanelCuadricula panel;
+    Color color;
     public DDA(PanelCuadricula panel){
         this.panel = panel;
     }
     @Override
-    public void linea(Point ini, Point fin, String modo){
+    public void dibujarLinea(Point ini, Point fin, String modo, Color color){
+        this.color = color;
         if(modo.equals("Linea Gruesa")){
             lineaGruesa(ini, fin);
         }
@@ -36,7 +39,7 @@ public class DDA extends Primitiva2DLinea{
                         dx = -1;
                     else
                         dx = 1;
-                        panel.pintar(xIni, yIni);
+                        panel.pintar(xIni, yIni, color);
                         try {
                             Thread.sleep(250);
                         }catch (InterruptedException ex) {
@@ -46,7 +49,7 @@ public class DDA extends Primitiva2DLinea{
                     while(xIni != xFin){
                         xIni += dx;
                         yIni =  (int) Math.round(m * xIni + b);
-                        panel.pintar(xIni, yIni);
+                        panel.pintar(xIni, yIni, color);
                         try {
                             Thread.sleep(250);
                         }catch (InterruptedException ex) {
@@ -55,7 +58,7 @@ public class DDA extends Primitiva2DLinea{
                     }
                 }
                 else{
-                    panel.pintar(xIni, yIni);
+                    panel.pintar(xIni, yIni, color);
                     try {
                         Thread.sleep(250);
                     }catch (InterruptedException ex) {
@@ -71,7 +74,7 @@ public class DDA extends Primitiva2DLinea{
                         while(yIni != yFin) { 
                             yIni += dy;
                             xIni =  (int) Math.round(m*yIni + b);
-                            panel.pintar(xIni, yIni);
+                            panel.pintar(xIni, yIni, color);
                             try {
                                 Thread.sleep(250);
                             }catch (InterruptedException ex) {
@@ -99,8 +102,8 @@ public class DDA extends Primitiva2DLinea{
             }else{
                 dx = 1;
             }
-            panel.pintar(ini.x, ini.y);
-            panel.pintar(ini.x, ini.y+1);
+            panel.pintar(ini.x, ini.y, color);
+            panel.pintar(ini.x, ini.y+1, color);
             try {
                 Thread.sleep(250);
             }catch (InterruptedException ex) {
@@ -110,9 +113,9 @@ public class DDA extends Primitiva2DLinea{
             {
                 ini.x += dx;
                 ini.y =  (int) Math.round(m * ini.x + b);
-                panel.pintar(ini.x, ini.y);
+                panel.pintar(ini.x, ini.y, color);
                 try {
-                panel.pintar(ini.x, ini.y+1);
+                panel.pintar(ini.x, ini.y+1, color);
                     Thread.sleep(250);
                 }catch (InterruptedException ex) {
                     Logger.getLogger(PanelCuadricula.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,8 +124,8 @@ public class DDA extends Primitiva2DLinea{
         }
         else
         {
-            panel.pintar(ini.x, ini.y);
-            panel.pintar(ini.x, ini.y+1);
+            panel.pintar(ini.x, ini.y, color);
+            panel.pintar(ini.x, ini.y+1, color);
             try {
                 Thread.sleep(250);
             }catch (InterruptedException ex) {
@@ -141,8 +144,8 @@ public class DDA extends Primitiva2DLinea{
                 { 
                     ini.y += dy;
                     ini.x =  (int) Math.round(m*ini.y + b);
-                    panel.pintar(ini.x, ini.y);
-                    panel.pintar(ini.x, ini.y+1);
+                    panel.pintar(ini.x, ini.y, color);
+                    panel.pintar(ini.x, ini.y+1, color);
                     try {
                         Thread.sleep(250);
                     }catch (InterruptedException ex) {
@@ -167,7 +170,7 @@ public class DDA extends Primitiva2DLinea{
             }else{
                 dx = 1;
             }
-            panel.pintar(ini.x, ini.y);
+            panel.pintar(ini.x, ini.y, color);
             try {
                 Thread.sleep(250);
             }catch (InterruptedException ex) {
@@ -179,7 +182,7 @@ public class DDA extends Primitiva2DLinea{
                 ini.x += dx;
                 ini.y =  (int) Math.round(m * ini.x + b);
                 if(aux == true){
-                    panel.pintar(ini.x, ini.y);
+                    panel.pintar(ini.x, ini.y, color);
                     try {
                         Thread.sleep(250);
                     }catch (InterruptedException ex) {
@@ -196,7 +199,7 @@ public class DDA extends Primitiva2DLinea{
         }
         else
         {
-            panel.pintar(ini.x, ini.y);
+            panel.pintar(ini.x, ini.y, color);
             try {
                 Thread.sleep(250);
             }catch (InterruptedException ex) {
@@ -216,7 +219,7 @@ public class DDA extends Primitiva2DLinea{
                     ini.y += dy;
                     ini.x =  (int) Math.round(m*ini.y + b);
                     if(aux == true){
-                    panel.pintar(ini.x, ini.y);
+                    panel.pintar(ini.x, ini.y, color);
                     try {
                         Thread.sleep(250);
                     }catch (InterruptedException ex) {

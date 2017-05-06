@@ -1,6 +1,7 @@
 
 package modelo;
 
+import java.awt.Color;
 import java.awt.Point;
 
 /**
@@ -8,16 +9,23 @@ import java.awt.Point;
  * @author Administrator
  */
 public class Pixel extends Point{
-    private boolean power;
-
+    private Color color;
+    
     public Pixel(int x, int y) {
         super(x, y);
-        power = false;
+        color = Color.WHITE;//sin color
     }
-    public void encender(){
-        power = true;
+    
+    public boolean estaPintado() {
+        return !color.equals(Color.WHITE);
     }
-    public boolean estaEncendido() {
-        return power;
+
+    public void setColor(Color color) {
+        this.color = color;
     }
+
+    public Color getColor() {
+        return color;
+    }
+    
 }

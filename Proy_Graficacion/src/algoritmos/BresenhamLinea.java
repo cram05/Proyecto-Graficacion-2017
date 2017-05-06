@@ -1,5 +1,6 @@
 package algoritmos;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,14 +16,14 @@ public class BresenhamLinea extends Primitiva2DLinea{
     }
     
     @Override
-    public void linea(Point ini, Point fin, String modo){
+    public void dibujarLinea(Point ini, Point fin, String modo, Color color){
         int x0=ini.x; int y0=ini.y; int x1=fin.x; int y1=fin.y;
         if(modo.equals("Linea Gruesa")){
-            lineaGruesa(x0, y0, x1, y1);
+            lineaGruesa(x0, y0, x1, y1, color);
         }
         else{
             if(modo.equals("Linea Segmentada")){
-                lineaSegmentada(x0, y0, x1, y1);
+                lineaSegmentada(x0, y0, x1, y1, color);
             }
             else{
 
@@ -36,7 +37,7 @@ public class BresenhamLinea extends Primitiva2DLinea{
                 int e2;
                 while (true) 
                 {
-                    panel.pintar(x0, y0);
+                    panel.pintar(x0, y0, color);
                     try {
                     Thread.sleep(550);
                     } catch (InterruptedException ex) {
@@ -58,7 +59,7 @@ public class BresenhamLinea extends Primitiva2DLinea{
         }
     }
     
-    public void lineaSegmentada(int x0, int y0, int x1, int y1) 
+    public void lineaSegmentada(int x0, int y0, int x1, int y1, Color color) 
     {                    
         int dx = Math.abs(x1 - x0);
         int dy = Math.abs(y1 - y0);
@@ -73,7 +74,7 @@ public class BresenhamLinea extends Primitiva2DLinea{
         while (true) 
         {
             if(aux == true){
-            panel.pintar(x0, y0);
+            panel.pintar(x0, y0, color);
             try {
             Thread.sleep(550);
             } catch (InterruptedException ex) {
@@ -118,7 +119,7 @@ public class BresenhamLinea extends Primitiva2DLinea{
         }   		  
     } 
 
-     public void lineaGruesa(int x0, int y0, int x1, int y1) 
+     public void lineaGruesa(int x0, int y0, int x1, int y1, Color color) 
     {                   
         int dx = Math.abs(x1 - x0);
         int dy = Math.abs(y1 - y0);
@@ -134,8 +135,8 @@ public class BresenhamLinea extends Primitiva2DLinea{
       if(m<=0){
         while (true) 
         {
-            panel.pintar(x0, y0);
-            panel.pintar(x0, y0+1);
+            panel.pintar(x0, y0, color);
+            panel.pintar(x0, y0+1, color);
             try {
             Thread.sleep(550);
             } catch (InterruptedException ex) {
@@ -163,8 +164,8 @@ public class BresenhamLinea extends Primitiva2DLinea{
       else if(m > 0){
          while (true) 
         {
-            panel.pintar(x0, y0);
-            panel.pintar(x0+1, y0);
+            panel.pintar(x0, y0, color);
+            panel.pintar(x0+1, y0, color);
             try {
             Thread.sleep(550);
             } catch (InterruptedException ex) {
@@ -192,8 +193,8 @@ public class BresenhamLinea extends Primitiva2DLinea{
   }else{
          while (true) 
         {
-            panel.pintar(x0, y0);
-            panel.pintar(x0+1, y0);
+            panel.pintar(x0, y0, color);
+            panel.pintar(x0+1, y0, color);
             try {
             Thread.sleep(550);
             } catch (InterruptedException ex) {

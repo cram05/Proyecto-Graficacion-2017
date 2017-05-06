@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  *
  * @author Administrator
  */
-public class VentanaLinea extends JFrame{
+public class VentanaLinea extends JPanel{
     public PanelCuadricula panel1;
     public PanelCuadricula panel2;
     public JTextField campoX1;
@@ -30,10 +30,10 @@ public class VentanaLinea extends JFrame{
     public JRadioButton radio3;
     
     public VentanaLinea() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setSize(800, 500);
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         
         panel1 = new PanelCuadricula();
         panel1.setLocation(50, 90);
@@ -146,7 +146,4 @@ public class VentanaLinea extends JFrame{
         setVisible(true);
     }
     
-    public static void main(String[] args) {
-        VentanaLinea v = new VentanaLinea();
-    }
 }

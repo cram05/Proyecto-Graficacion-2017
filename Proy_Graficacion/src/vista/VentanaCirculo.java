@@ -11,20 +11,20 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class VentanaCirculo extends JFrame{
+public class VentanaCirculo extends JPanel{
     public PanelCuadricula panel1;
     public PanelCuadricula panel2;
-    public JTextField textR;
+    public JTextField fieldRadio;
     public ButtonGroup grupo;
     public JRadioButton radioBtnNormal;
     public JRadioButton radioBtnGruesa;
     public JRadioButton radioBtnSegmentada;
     
     public VentanaCirculo() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setSize(800, 500);
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
 
         JLabel titulo = new JLabel("PROYECTO DE GRAFICACIÓN - CIRCUNFERENCIA");
         titulo.setBounds(200, 0, 400, 50);  
@@ -57,9 +57,9 @@ public class VentanaCirculo extends JFrame{
         label1.setForeground(Color.WHITE);
         this.add(label1);
         
-        textR = new JTextField("5");
-        textR.setBounds(70,400,50,25);
-        this.add(textR);
+        fieldRadio = new JTextField("5");
+        fieldRadio.setBounds(70,400,50,25);
+        this.add(fieldRadio);
         
         JButton boton1 = new JButton("Dibujar");
         boton1.setBounds(130, 400, 80, 25);
@@ -181,12 +181,4 @@ public class VentanaCirculo extends JFrame{
         return panel2;
     }
     
-    public static void main(String[] args) {
-        VentanaCirculo v = new VentanaCirculo();
-        /*BresenhamCirculo c1 = new BresenhamCirculo(v.getPanel1());
-        Thread hilo1 = new Thread (new AnimacionCuadro(c1,12));
-        hilo1.start();
-        CoordenadasPolares c = new CoordenadasPolares(v.getPanel2());
-        c.circulo(12);*/
-    }
 }

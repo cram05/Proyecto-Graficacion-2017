@@ -10,31 +10,26 @@ import javax.swing.JPanel;
  * @author Administrator
  */
 public class PanelCuadricula extends JPanel{
-    private Color color1 = Color.WHITE;
-    private Color color2 = Color.ORANGE;
     private Pixel[][] cuadricula;
+    private final int tamPixel = 10;
 
     public PanelCuadricula() {
         inicializarCuadricula();
         setBackground(Color.BLACK);
-        setSize(cuadricula.length*11, cuadricula.length*11);
+        setSize(cuadricula.length*(tamPixel+1), cuadricula.length*(tamPixel+1));//+1 para la separacion entre pixeles
     }
     
     @Override
     public void paint(Graphics g)
     {
         super.paint(g);
-        g.setColor(color1);
         for (int i = 0; i < cuadricula.length; i++) {
             for (int j = 0; j < cuadricula.length; j++) {
                 int x = cuadricula[i][j].x;
                 int y = cuadricula[i][j].y;
-                if(cuadricula[i][j].estaEncendido()){
-                    g.setColor(color2);
-                }else{
-                    g.setColor(color1);
-                }
-                g.fillRect(x, y, 10, 10);
+                Color miColor = cuadricula[i][j].getColor();
+                g.setColor(miColor);
+                g.fillRect(x, y, tamPixel, tamPixel);
             }
         }
     }
@@ -46,21 +41,25 @@ public class PanelCuadricula extends JPanel{
         for (int i = 0; i < cuadricula.length; i++) {
             for (int j = 0; j < cuadricula.length; j++) {
                 cuadricula [i][j] = new Pixel(x,y);
-                x += 11;
+                x += tamPixel+1; //+1 para la separacion entre pixeles
             }
-            y += 11;
+            y += tamPixel+1;    //+1 para la separacion entre pixeles
             x = 0;
         }
     }
     
-    public void pintar(int x,int y){
-        int t = cuadricula.length;
-        cuadricula[t-y-1][x].encender();
-        repaint();
-    }
-
     public void borrar() {
         inicializarCuadricula();
         repaint();
     }
+
+    public Pixel[][] getCuadricula() {
+        return cuadricula;
+    }
+
+    public void pintar(int x, int y, Color color) {
+        cuadricula[cuadricula.length-y-1][x].setColor(color);
+        repaint();
+    }
+    
 }

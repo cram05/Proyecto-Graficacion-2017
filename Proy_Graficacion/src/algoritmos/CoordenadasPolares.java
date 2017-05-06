@@ -1,5 +1,6 @@
 package algoritmos;
 
+import java.awt.Color;
 import modelo.Primitiva2DCirculo;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,30 +14,30 @@ public class CoordenadasPolares extends Primitiva2DCirculo{
     }
     
     @Override
-    public void circulo(int radio, String modo){
+    public void dibujarCirculo(int radio, String modo, Color color){
         boolean segmentado = modo.equals("Linea Segmentada");
         boolean grueso = modo.equals("Linea Gruesa");
         double anguloBeta = (segmentado) ? Math.toRadians(15) : Math.toRadians(9);
         int x = radio;
         int y = 0;
         while(x >= y){
-            panel.pintar(x+12, y+12);
-            panel.pintar(y+12, x+12);
-            panel.pintar(-x+12, y+12);
-            panel.pintar(-y+12, x+12);
-            panel.pintar(-x+12, -y+12);
-            panel.pintar(-y+12, -x+12);
-            panel.pintar(x+12, -y+12);
-            panel.pintar(y+12, -x+12);
+            panel.pintar(x+12, y+12, color);
+            panel.pintar(y+12, x+12, color);
+            panel.pintar(-x+12, y+12, color);
+            panel.pintar(-y+12, x+12, color);
+            panel.pintar(-x+12, -y+12, color);
+            panel.pintar(-y+12, -x+12, color);
+            panel.pintar(x+12, -y+12, color);
+            panel.pintar(y+12, -x+12, color);
             if(grueso){
-                panel.pintar(x+13, y+12);
-                panel.pintar(y+12, x+13);
-                panel.pintar(-x+11, y+12);
-                panel.pintar(-y+12, x+13);
-                panel.pintar(-x+11, -y+12);
-                panel.pintar(-y+12, -x+11);
-                panel.pintar(x+13, -y+12);
-                panel.pintar(y+12, -x+11);
+                panel.pintar(x+13, y+12, color);
+                panel.pintar(y+12, x+13, color);
+                panel.pintar(-x+11, y+12, color);
+                panel.pintar(-y+12, x+13, color);
+                panel.pintar(-x+11, -y+12, color);
+                panel.pintar(-y+12, -x+11, color);
+                panel.pintar(x+13, -y+12, color);
+                panel.pintar(y+12, -x+11, color);
             }
             try {
                 Thread.sleep(450);
@@ -46,6 +47,6 @@ public class CoordenadasPolares extends Primitiva2DCirculo{
             x = (int) Math.round(x*Math.cos(anguloBeta) - y*Math.sin(anguloBeta));
             y = (int) Math.round(y*Math.cos(anguloBeta) + x*Math.sin(anguloBeta));
         }
-        System.out.println("exitoso coordenadas polares");
+        System.out.println("coordenadas polares termino!!!");
     }
 }
