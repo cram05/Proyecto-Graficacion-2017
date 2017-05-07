@@ -3,6 +3,7 @@ package control;
 import algoritmos.BresenhamLinea;
 import algoritmos.DDA;
 import algoritmos.EcuacionRecta;
+import java.awt.Color;
 import modelo.Primitiva2DLinea;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -53,10 +54,10 @@ public class AccionBotonDibujarLinea implements ActionListener {
                 case "Linea DDA" :      alg2 = new DDA(vl.panel2); break;
                 case "Linea Ecuacion" : alg2 = new EcuacionRecta(vl.panel2); break;
             }
-            Thread hilo1 = new Thread (new AnimacionLinea(alg1, new Point(x1, y1), new Point(x2, y2), modo));
+            Thread hilo1 = new Thread (new AnimacionLinea(alg1, new Point(x1, y1), new Point(x2, y2), modo,Color.ORANGE));
             hilo1.start();
 
-            Thread hilo2 = new Thread (new AnimacionLinea(alg2, new Point(x1, y1), new Point(x2, y2), modo));
+            Thread hilo2 = new Thread (new AnimacionLinea(alg2, new Point(x1, y1), new Point(x2, y2), modo,Color.ORANGE));
             hilo2.start();
         }
     }

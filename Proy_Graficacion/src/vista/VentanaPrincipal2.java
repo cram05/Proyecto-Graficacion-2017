@@ -10,7 +10,8 @@ import javax.swing.JPanel;
 public class VentanaPrincipal2 extends javax.swing.JFrame {
     private PanelCircunferenciaFill panelCirculo;
        private PanelCuadradoFill panelCuadrado;
-    
+       private PanelTrianguloFill panelTriangulo;
+       
     public VentanaPrincipal2() {
         PanelColores paletaColores = new PanelColores();
         paletaColores.setLocation(350, 130);
@@ -20,10 +21,13 @@ public class VentanaPrincipal2 extends javax.swing.JFrame {
         initComponents();
             panelCuadrado = new PanelCuadradoFill(paletaColores);
             panelCuadrado.setLocation(0, -30);
+            panelTriangulo = new PanelTrianguloFill(paletaColores);
+            panelTriangulo.setLocation(0, -30);
         panelCirculo = new PanelCircunferenciaFill(paletaColores);
         panelCirculo.setLocation(0, -30);
         PanelCircunferencia.add(panelCirculo);
             PanelCuadradito.add(panelCuadrado);
+            PanelTriangulito.add(panelTriangulo);
         
         JPanel fondo = new JPanel();
         fondo.setBounds(0, 0, getWidth(), getHeight());
@@ -42,7 +46,7 @@ public class VentanaPrincipal2 extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         PanelCircunferencia = new javax.swing.JPanel();
         PanelCuadradito = new javax.swing.JPanel();
-        panelTriangulo = new javax.swing.JPanel();
+        PanelTriangulito = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,18 +80,18 @@ public class VentanaPrincipal2 extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Cuadrado", PanelCuadradito);
 
-        javax.swing.GroupLayout panelTrianguloLayout = new javax.swing.GroupLayout(panelTriangulo);
-        panelTriangulo.setLayout(panelTrianguloLayout);
-        panelTrianguloLayout.setHorizontalGroup(
-            panelTrianguloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout PanelTriangulitoLayout = new javax.swing.GroupLayout(PanelTriangulito);
+        PanelTriangulito.setLayout(PanelTriangulitoLayout);
+        PanelTriangulitoLayout.setHorizontalGroup(
+            PanelTriangulitoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 520, Short.MAX_VALUE)
         );
-        panelTrianguloLayout.setVerticalGroup(
-            panelTrianguloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        PanelTriangulitoLayout.setVerticalGroup(
+            PanelTriangulitoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 433, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Triangulo", panelTriangulo);
+        jTabbedPane1.addTab("Triangulo", PanelTriangulito);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,8 +156,8 @@ public class VentanaPrincipal2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelCircunferencia;
     private javax.swing.JPanel PanelCuadradito;
+    private javax.swing.JPanel PanelTriangulito;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JPanel panelTriangulo;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,16 +14,18 @@ public class AnimacionLinea implements Runnable{
     private Point ini;
     private Point fin;
     private String modo;
-    public AnimacionLinea(Primitiva2DLinea alg, Point ini, Point fin, String modo) {
+    private Color color;
+    public AnimacionLinea(Primitiva2DLinea alg, Point ini, Point fin, String modo, Color color) {
        this.alg = alg;
        this.ini = ini;
        this.fin = fin;
        this.modo = modo;
+       this.color = color;
     }
 
     @Override
     public void run() {
-        alg.dibujarLinea(ini, fin, modo, Color.ORANGE);
+        alg.dibujarLinea(ini, fin, modo, color);
     }
     
 }

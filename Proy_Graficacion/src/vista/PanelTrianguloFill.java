@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package vista;
+import algoritmos.BresenhamCirculo;
 import modelo.RunnablePintar;
 import algoritmos.DDA;
 import java.awt.Color;
@@ -11,18 +12,20 @@ import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import modelo.AnimacionCircunferencia;
 import modelo.AnimacionLinea;
 /**
  *
  * @author gary
  */
-public class PanelCuadradoFill extends JPanel {
-    private PanelCuadricula panel1;
+public class PanelTrianguloFill extends JPanel {
+    private PanelCuadricula panel2;
     private JTextField fieldOrigenX;
     private JTextField fieldOrigenY;
     private JTextField fieldLado;
@@ -30,12 +33,12 @@ public class PanelCuadradoFill extends JPanel {
     private JButton botonPintar;
     private PanelColores paletaColores;
     
-    public PanelCuadradoFill(PanelColores paletaColores) {
+    public PanelTrianguloFill(PanelColores paletaColores) {
         this.paletaColores = paletaColores;
         setLayout(null);
         setSize(600, 450);
 
-        JLabel titulo = new JLabel("CUADRADO");
+        JLabel titulo = new JLabel("TRIANGULO");
         titulo.setBounds(120, 30, 400, 50);  
         titulo.setFont(new Font("Tahoma", 1, 17));
         titulo.setForeground(Color.ORANGE);
@@ -47,9 +50,9 @@ public class PanelCuadradoFill extends JPanel {
         titulo1.setForeground(Color.WHITE);
         this.add(titulo1); 
         
-        panel1 = new PanelCuadricula();
-        panel1.setLocation(50, 90);
-        add(panel1);
+        panel2 = new PanelCuadricula();
+        panel2.setLocation(50, 90);
+        add(panel2);
         
         JLabel label1 = new JLabel("Origen");
         label1.setBounds(90,380,70,25);
@@ -74,7 +77,7 @@ public class PanelCuadradoFill extends JPanel {
         fieldOrigenY = new JTextField("2");
         fieldOrigenY.setBounds(120,400,25,25);
         this.add(fieldOrigenY);
-        fieldLado = new JTextField("9");
+        fieldLado = new JTextField("13");
         fieldLado.setBounds(171,400,25,25);
         this.add(fieldLado);
         
@@ -122,30 +125,79 @@ public class PanelCuadradoFill extends JPanel {
              b += 11;
         }
     }
-
+    public ArrayList<Integer> ddaEquis(Point ini,Point fin){
+        ArrayList<Integer> equis = new ArrayList<Integer>();
+        
+                int xIni=ini.x; int yIni=ini.y; int xFin=fin.x; int yFin=fin.y;
+                double dx = xFin - xIni;
+                double dy = yFin - yIni;           
+                if(Math.abs(dx) > Math.abs(dy)){
+                    double m = dy/dx;
+                    double b = Math.round(yIni - m*xIni);
+                    if(dx < 0)
+                        dx = -1;
+                    else
+                        dx = 1;
+                           equis.add(xIni);
+                    while(xIni != xFin){
+                        xIni += dx;
+                        yIni =  (int) Math.round(m * xIni + b);
+                        equis.add(xIni);
+                    }
+                }
+                else{
+                           equis.add(xIni);
+                    if(dy != 0){
+                        double m =(double) dx/dy;
+                        double b = xIni - (m*yIni);
+                        if(dy < 0)
+                            dy = -1;
+                        else
+                            dy = 1;
+                        while(yIni != yFin) { 
+                            yIni += dy;
+                            xIni =  (int) Math.round(m*yIni + b);
+                              equis.add(xIni);
+                        }
+                    }
+                } 
+        return equis;
+    }
+    
     private class AccionBotonDibujar1 implements ActionListener {
         
         @Override
         public void actionPerformed(ActionEvent e) {
             Color color = paletaColores.getColorContorno();
-            panel1.borrar();
+            panel2.borrar();
+             ArrayList<Integer> linea = new ArrayList<Integer>();
             try {
-                //int radio = Integer.parseInt(fieldRadio.getText());
                 int lado = Integer.parseInt(fieldLado.getText());
                 int px = Integer.parseInt(fieldOrigenX.getText());
                 int py = Integer.parseInt(fieldOrigenY.getText());
-               // if(radio <= 11){
                     String modo = "normal";
-                    //BresenhamCirculo bres = new BresenhamCirculo(panel);
-                    DDA dda = new DDA(panel1);
+                    DDA dda = new DDA(panel2);
+                    linea = ddaEquis(new Point(px,py),new Point(px+lado-1,py));
+                    double lado1 = lado*1.0; 
+                    double d = Math.round((lado1/2.0)-1);
+                    int aux = (int)d;
+                     int xx = 0;
+                     int yy = 0;
+       
+                     for(int i=0;i<linea.size();i++){
+                        if(i==aux){
+                          xx = linea.get(i);
+                              System.out.println(xx);
+                        }else if(i==linea.size()-2){
+                                yy = linea.get(i);          
+                         }  
+                      }
                     Thread hilo1 = new Thread (new AnimacionLinea(dda,new Point(px,py),new Point(px+lado-1,py), modo, color));
-                    Thread hilo2 = new Thread (new AnimacionLinea(dda,new Point(px,py),new Point(px,py+lado-1), modo, color));
-                    Thread hilo3 = new Thread (new AnimacionLinea(dda,new Point(px+lado-1,py+lado-1),new Point(px,py+lado-1), modo, color));
-                    Thread hilo4 = new Thread (new AnimacionLinea(dda,new Point(px+lado-1,py+lado-1),new Point(px+lado-1,py), modo, color));
+                    Thread hilo2 = new Thread (new AnimacionLinea(dda,new Point(px,py),new Point(xx,yy), modo, color));
+                    Thread hilo3 = new Thread (new AnimacionLinea(dda,new Point(xx,yy),new Point(px+lado-1,py), modo, color));
                     hilo1.start();
                     hilo2.start();
                     hilo3.start();
-                    hilo4.start();
                     botonPintar.setEnabled(true);
                 
             } catch (Exception ex) {
@@ -160,11 +212,10 @@ public class PanelCuadradoFill extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             Color color = paletaColores.getColorFondo();
-            Thread hilo5 = new Thread (new RunnablePintar(panel1, color, tx+18, ty+1));
-            hilo5.start();
+            Thread hilo4 = new Thread (new RunnablePintar(panel2, color, tx+18, ty+5));
+            hilo4.start();
         }
     }
 }
 
-    
 
