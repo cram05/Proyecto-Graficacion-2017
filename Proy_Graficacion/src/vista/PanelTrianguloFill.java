@@ -164,6 +164,44 @@ public class PanelTrianguloFill extends JPanel {
         return equis;
     }
     
+    public ArrayList<Integer> ddaYe(Point ini,Point fin){
+        ArrayList<Integer> ye = new ArrayList<Integer>();
+        
+                int xIni=ini.x; int yIni=ini.y; int xFin=fin.x; int yFin=fin.y;
+                double dx = xFin - xIni;
+                double dy = yFin - yIni;           
+                if(Math.abs(dx) > Math.abs(dy)){
+                    double m = dy/dx;
+                    double b = Math.round(yIni - m*xIni);
+                    if(dx < 0)
+                        dx = -1;
+                    else
+                        dx = 1;
+                           ye.add(yIni);
+                    while(xIni != xFin){
+                        xIni += dx;
+                        yIni =  (int) Math.round(m * xIni + b);
+                        ye.add(yIni);
+                    }
+                }
+                else{
+                           ye.add(yIni);
+                    if(dy != 0){
+                        double m =(double) dx/dy;
+                        double b = xIni - (m*yIni);
+                        if(dy < 0)
+                            dy = -1;
+                        else
+                            dy = 1;
+                        while(yIni != yFin) { 
+                            yIni += dy;
+                            xIni =  (int) Math.round(m*yIni + b);
+                              ye.add(yIni);
+                        }
+                    }
+                } 
+        return ye;
+    }
     private class AccionBotonDibujar1 implements ActionListener {
         
         @Override
@@ -171,26 +209,35 @@ public class PanelTrianguloFill extends JPanel {
             Color color = paletaColores.getColorContorno();
             panel2.borrar();
              ArrayList<Integer> linea = new ArrayList<Integer>();
-            try {
+             ArrayList<Integer> linea2 = new ArrayList<Integer>();
+             try {
                 int lado = Integer.parseInt(fieldLado.getText());
                 int px = Integer.parseInt(fieldOrigenX.getText());
                 int py = Integer.parseInt(fieldOrigenY.getText());
                     String modo = "normal";
                     DDA dda = new DDA(panel2);
                     linea = ddaEquis(new Point(px,py),new Point(px+lado-1,py));
+                    linea2 = ddaYe(new Point(px,py),new Point(px,py+lado-1));
                     double lado1 = lado*1.0; 
                     double d = Math.round((lado1/2.0)-1);
                     int aux = (int)d;
                      int xx = 0;
                      int yy = 0;
-       
+                     
                      for(int i=0;i<linea.size();i++){
                         if(i==aux){
                           xx = linea.get(i);
-                              System.out.println(xx);
-                        }else if(i==linea.size()-2){
-                                yy = linea.get(i);          
-                         }  
+                              System.out.println("esto es x:"+xx);
+                        }else {}
+                           
+                      }
+                     int solo = linea2.size()-2;
+                     for(int j=0;j<linea2.size();j++){
+                        if(j==solo){
+                          yy = linea2.get(j);
+                              System.out.println("estoes y:"+yy);
+                        }else {}
+                         
                       }
                     Thread hilo1 = new Thread (new AnimacionLinea(dda,new Point(px,py),new Point(px+lado-1,py), modo, color));
                     Thread hilo2 = new Thread (new AnimacionLinea(dda,new Point(px,py),new Point(xx,yy), modo, color));

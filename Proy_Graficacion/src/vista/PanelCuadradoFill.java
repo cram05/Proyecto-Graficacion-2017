@@ -160,7 +160,7 @@ public class PanelCuadradoFill extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             Color color = paletaColores.getColorFondo();
-            Thread hilo5 = new Thread (new RunnablePintar(panel1, color, tx+18, ty+1));
+            Thread hilo5 = new Thread (new RunnablePintar(panel1, color, tx+1, ty+1));
             hilo5.start();
         }
     }
