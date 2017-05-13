@@ -8,8 +8,8 @@ import modelo.Primitiva2DLinea;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import modelo.AnimacionLinea;
-import vista.VentanaLinea;
+import modelo.runnables.AnimacionLinea;
+import vista.figurasTrazos.VentanaLinea;
 
 /**
  *

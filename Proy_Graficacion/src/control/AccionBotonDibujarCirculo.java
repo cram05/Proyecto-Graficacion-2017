@@ -6,8 +6,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JRadioButton;
-import modelo.AnimacionCircunferencia;
-import vista.VentanaCirculo;
+import modelo.runnables.AnimacionCircunferencia;
+import vista.figurasTrazos.VentanaCirculo;
 
 /**
  *

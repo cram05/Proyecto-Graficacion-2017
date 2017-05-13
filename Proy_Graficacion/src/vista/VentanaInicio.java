@@ -1,5 +1,7 @@
 package vista;
 
+import vista.figurasTrazos.VentanaPrincipal1;
+import vista.pintado.VentanaPrincipal2;
 import java.awt.Color;
 import javax.swing.JPanel;
 

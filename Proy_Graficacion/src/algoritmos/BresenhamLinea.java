@@ -39,7 +39,7 @@ public class BresenhamLinea extends Primitiva2DLinea{
                 {
                     panel.pintar(x0, y0, color);
                     try {
-                    Thread.sleep(550);
+                    Thread.sleep(200);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(PanelCuadricula.class.getName()).log(Level.SEVERE, null, ex);
                     }
